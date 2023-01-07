@@ -1,0 +1,10 @@
+.underline {
+    height: 3px;
+    width: 100px;
+    background-color: #e71212 !important;
+    margin-bottom: 10px;
+}
+
+.bg-gray {
+    background-color: #ddd;
+}

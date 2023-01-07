@@ -11,7 +11,9 @@ class HomepageController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        $allCategories = Category::where('status', '0')->get();
+        $latestPosts = Post::where('status', '0')->orderBy('created_at', 'DESC')->take(15)->get();
+        return view('frontend.index', compact('allCategories', 'latestPosts'));
     }
 
     public function viewCategoryPost($category_slug)
