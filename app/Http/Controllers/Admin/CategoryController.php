@@ -10,6 +10,7 @@ use COM;
 use Illuminate\Support\Facades\File;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -30,7 +31,7 @@ class CategoryController extends Controller
         $data = $request->validated();
         $category = new Category();
         $category->name = $data['name'];
-        $category->slug = $data['slug'];
+        $category->slug = Str::slug($data['slug']);
         $category->description = $data['description'];
 
         if ($request->hasFile('image')) {
@@ -57,13 +58,20 @@ class CategoryController extends Controller
 
     public function update(CategoryFormRequest $request, $category_id)
     {
+        //Validate data from the form
         $data = $request->validated();
-        $category = Category::find($category_id);
-        $category->name = $data['name'];
-        $category->slug = $data['slug'];
-        $category->description = $data['description'];
 
+        //If the data from form validated successfully
+        //Find the category that has $category_id
+        $category = Category::find($category_id);
+
+        //Assign the attributes to new values
+        $category->name = $data['name'];
+        $category->slug = Str::slug($data['slug']);
+        $category->description = $data['description'];
+        //Check if has image
         if ($request->hasFile('image')) {
+
             $destination = 'uploads/category/' . $category->image;
             if (File::exists($destination)) {
                 File::delete($destination);
@@ -79,6 +87,8 @@ class CategoryController extends Controller
         $category->navbar_status = $request->navbar_status == true ? '1' : '0';
         $category->status = $request->status == true ? '1' : '0';
         $category->created_by = Auth::user()->id;
+
+        //Update category
         $category->update();
         return redirect('/admin/category')->with('message', 'Category Updated Successfully');
     }
@@ -91,6 +101,7 @@ class CategoryController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
+
             $category->delete();
             return redirect('admin/category')->with('message', 'Category Deleted Successfully');
         } else {

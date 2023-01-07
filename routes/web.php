@@ -5,11 +5,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\HomepageController;
+use App\Http\Controllers\HomeController;
 
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomepageController::class, 'index']);
 
 //Routes
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
@@ -36,6 +35,8 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/user/{user_id}', [UserController::class, 'edit']);
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
+
+Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
 
 Auth::routes();
 
