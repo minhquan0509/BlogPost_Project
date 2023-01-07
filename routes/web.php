@@ -37,8 +37,10 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
 
+// This route for view post at homepage
 Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
+Route::get('/tutorial/{category_slug}/{post_slug}', [HomepageController::class, 'viewPost']);
 
+// This route for authentication
 Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
