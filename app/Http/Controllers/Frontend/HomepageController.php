@@ -18,7 +18,7 @@ class HomepageController extends Controller
     {
         $category = Category::where('slug', $category_slug)->where('status', 0)->first();
         if ($category) {
-            $posts = Post::where('category_id', $category->id)->where('status', 0)->get();
+            $posts = Post::where('category_id', $category->id)->where('status', 0)->paginate(1);
             return view('frontend.post.index', compact('category', 'posts'));
         } else return redirect('/');
     }

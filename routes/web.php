@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [HomepageController::class, 'index']);
 

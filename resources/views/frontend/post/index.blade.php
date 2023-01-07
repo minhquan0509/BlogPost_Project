@@ -33,6 +33,10 @@
                         </div>
                     @endforelse
 
+                    {{-- For pagination --}}
+                    <div class="your-paginate mt-3">
+                        {{ $posts->links() }}
+                    </div>
 
                 </div>
                 <div class="col-md-3">
