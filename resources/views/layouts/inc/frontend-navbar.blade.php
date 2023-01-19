@@ -69,6 +69,29 @@
                         </li>
                     @endforeach
 
+
+                    @if (Auth::check())
+                        <li>
+                            <a class="nav-link btn-danger" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="post" class="d-none">
+                                @csrf
+                            </form>
+
+                        </li>
+                    @else
+                        <li>
+                            <a class="nav-link btn-danger" href="{{ route('login') }}"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Login</a>
+
+                            <form id="logout-form" action="{{ route('login') }}" method="get" class="d-none">
+                                @csrf
+                            </form>
+
+                        </li>
+                    @endif
+
                 </ul>
             </div>
         </div>

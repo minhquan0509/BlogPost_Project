@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,9 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/user/{user_id}', [UserController::class, 'edit']);
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
+
+//This route for comments system
+Route::post('comments', [CommentController::class, 'store']);
 
 // This route for authentication users (login,sign up,forgot password,....)
 Auth::routes();

@@ -30,37 +30,51 @@
                     {{-- For comments section --}}
                     <div class="comment-area mt-4">
 
+                        @if (session('message'))
+                            <h6 class="alert alert-danger mb-3">{{ session('message') }}</h6>
+                        @endif
+
                         <div class="card card-body">
                             <div class="card-title">Leave a comment for this post</div>
-                            <form action="" method="POST">
+                            <form action="{{ url('comments') }}" method="POST">
                                 @csrf
-                                <textarea name="comment_body" class="form-control" rows="3" required></textarea>
+                                <input type="hidden" name="post_slug" value="{{ $post->slug }}">
+                                <textarea name="comment_text" class="form-control" rows="3" required></textarea>
                                 <button type="submit" class="btn btn-primary mt-3">Submit</button>
                             </form>
                         </div>
 
-                        <div class="card card-body shadow-sm mt-3">
+                        @forelse ($post->comments as $comment)
+                            <div class="card card-body shadow-sm mt-3">
 
-                            <div class="detail-area">
-                                {{-- Information of the user who commented --}}
-                                <h6 class="user-name mb-1">
-                                    User one
-                                    <small class="ms-3 text-primary">Comment on 1-1-2002</small>
-                                </h6>
+                                <div class="detail-area">
+                                    {{-- Information of the user who commented --}}
+                                    <h6 class="user-name mb-1">
+                                        @if ($comment->user)
+                                            {{ $comment->user->name }}
+                                        @endif
+                                        <small class="ms-3 text-primary">Comment at {{ $comment->created_at }}</small>
+                                    </h6>
 
-                                <p class="user-comment mb-1">
-                                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Dolor corrupti similique
-                                    ipsum, odio aut atque quod repellat laboriosam explicabo provident incidunt, voluptas
-                                    earum dolorum. Animi autem nulla quisquam maxime. Ab.
-                                </p>
+                                    <p class="user-comment mb-1">
+                                        {{ $comment->comment_text }}
+                                    </p>
+                                </div>
+
+
+                                @if (Auth::check() && Auth::user()->id == $comment->user->id)
+                                    <div>
+                                        <a href="" class="btn btn-primary btn-sm me-2">Edit</a>
+                                        <a href="" class="btn btn-danger btn-sm me-2">Delete</a>
+                                    </div>
+                                @endif
+
                             </div>
+                        @empty
+                            <h6>This post doesnt have comments</h6>
+                        @endforelse
 
-                            <div>
-                                <a href="" class="btn btn-primary btn-sm me-2">Edit</a>
-                                <a href="" class="btn btn-danger btn-sm me-2">Delete</a>
-                            </div>
 
-                        </div>
 
                     </div>
 
