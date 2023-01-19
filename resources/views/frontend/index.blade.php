@@ -1,21 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- For the categories slidebar --}}
+    {{-- Phần này là nội dung cái thanh carousel trượt để hiển thị tất cả các categories và hình ảnh của nó --}}
     <div class="bg-light py-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
-
-                    <div class="owl-carousel owl-theme category-carousel">
+                    <div class="owl-carousel category-carousel owl-theme ">
 
                         @foreach ($allCategories as $category)
                             <div class="item">
 
                                 <a href="{{ url('tutorial/' . $category->slug) }}" class="text-decoration-none">
                                     <div class="card">
-                                        <img src="{{ asset('uploads/category/' . $category->image) }}" alt="Image">
+                                        <img height="140px" width="100px"
+                                            src="{{ asset('uploads/category/' . $category->image) }}" alt="Image">
                                         <div class="card-body text-center">
                                             <h5 class="text-dark">{{ $category->name }}</h5>
                                         </div>
@@ -73,10 +73,9 @@
                     <div class="col-md-3 ">
                         <div class="card card-body mb-3">
                             <a href="{{ url('tutorial/' . $category->slug) }}" class="text-decoration-none">
-                                <h5 class="text-dark mb-0">{{ $category->name }}</h5>
+                                <h5 class="text-dark mb-0 text-center">{{ $category->name }}</h5>
                             </a>
                         </div>
-
                     </div>
                 @endforeach
 

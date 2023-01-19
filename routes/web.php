@@ -9,12 +9,15 @@ use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
-Route::get('/', [HomepageController::class, 'index']);
 
-//Routes
+// This routes for view post and categories at homepage
+Route::get('/', [HomepageController::class, 'index']);
+Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
+Route::get('/tutorial/{category_slug}/{post_slug}', [HomepageController::class, 'viewPost']);
+
+// This routes for administrator to do CRUD with categories,users,posts...
 Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
-
     //For Categories
     Route::get('/category', [CategoryController::class, 'index']);
     Route::get('/add-category', [CategoryController::class, 'create']);
@@ -37,10 +40,6 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
 
-// This route for view post at homepage
-Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
-Route::get('/tutorial/{category_slug}/{post_slug}', [HomepageController::class, 'viewPost']);
-
-// This route for authentication
+// This route for authentication users (login,sign up,forgot password,....)
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

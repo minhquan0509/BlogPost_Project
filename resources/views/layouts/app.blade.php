@@ -34,7 +34,7 @@
 
         @include('layouts.inc.frontend-navbar')
 
-        <main class="py-4">
+        <main class="">
             @yield('content')
         </main>
 
@@ -52,6 +52,7 @@
             loop: true,
             margin: 4,
             nav: true,
+            dots: false,
             responsive: {
                 0: {
                     items: 1

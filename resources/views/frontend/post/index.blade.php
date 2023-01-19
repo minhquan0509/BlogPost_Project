@@ -4,6 +4,8 @@
 @section('meta_description', $category->meta_description)
 @section('meta_keyword', $category->meta_keyword)
 
+{{-- Phần này là để show tất cả các bài viết thuộc một category nào đó và hiển thị lên giao diện --}}
+
 @section('content')
     <div class="py-4">
         <div class="container">
@@ -11,12 +13,13 @@
                 <div class="col-md-9">
 
                     <div class="category-heading">
-                        <h2>{{ $category->name }}</h2>
+                        <h2>Posts about {{ $category->name }}</h2>
                     </div>
 
                     @forelse ($posts as $post)
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
+
                                 <a href="{{ url('tutorial/' . $category->slug . '/' . $post->slug) }}"
                                     class="text-decoration-none">
                                     <h3 class="post-heading">{{ $post->name }}</h2>
@@ -32,7 +35,7 @@
                     @empty
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
-                                <h1>No Post Available...</h1>
+                                <h4>No Post Available...</h1>
                             </div>
                         </div>
                     @endforelse
@@ -43,11 +46,13 @@
                     </div>
 
                 </div>
+
                 <div class="col-md-3">
                     <div class="border p-2">
-                        <h4>Advertising Area</h4>
+                        <h4>Another posts</h4>
                     </div>
                 </div>
+
             </div>
         </div>
     </div>

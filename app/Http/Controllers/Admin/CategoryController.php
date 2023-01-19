@@ -101,11 +101,13 @@ class CategoryController extends Controller
             if (File::exists($destination)) {
                 File::delete($destination);
             }
-
+            //Trước khi xóa 1 category , thực hiện xóa tất cả các bài posts liên quan đến nó
+            $category->posts()->delete();
             $category->delete();
-            return redirect('admin/category')->with('message', 'Category Deleted Successfully');
+
+            return redirect('admin/category')->with('message', 'Category is deleted Successfully');
         } else {
-            return redirect('admin/category')->with('message', 'No Category Id Found');
+            return redirect('admin/category')->with('message', 'No category found');
         }
     }
 }

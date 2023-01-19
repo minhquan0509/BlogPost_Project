@@ -1,0 +1,77 @@
++--------+----------+--------------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
+| Domain | Method   | URI                                  | Name             | Action                                                                 | Middleware                                  |
++--------+----------+--------------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+
+|        | GET|HEAD | /                                    |                  | App\Http\Controllers\Frontend\HomepageController@index                 | web                                         |
+|        | GET|HEAD | admin/add-category                   |                  | App\Http\Controllers\Admin\CategoryController@create                   | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | POST     | admin/add-category                   |                  | App\Http\Controllers\Admin\CategoryController@store                    | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/add-post                       |                  | App\Http\Controllers\Admin\PostController@create                       | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | POST     | admin/add-post                       |                  | App\Http\Controllers\Admin\PostController@store                        | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/category                       |                  | App\Http\Controllers\Admin\CategoryController@index                    | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/dashboard                      |                  | App\Http\Controllers\Admin\DashboardController@index                   | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/delete-category/{category_id}  |                  | App\Http\Controllers\Admin\CategoryController@destroy                  | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/delete-post/{post_id}          |                  | App\Http\Controllers\Admin\PostController@destroy                      | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/edit-category/{category_id}    |                  | App\Http\Controllers\Admin\CategoryController@edit                     | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/post/{post_id}                 |                  | App\Http\Controllers\Admin\PostController@edit                         | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/posts                          |                  | App\Http\Controllers\Admin\PostController@index                        | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | PUT      | admin/update-category/{category_id}  |                  | App\Http\Controllers\Admin\CategoryController@update                   | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | PUT      | admin/update-post/{post_id}          |                  | App\Http\Controllers\Admin\PostController@update                       | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | POST     | admin/update-user/{user_id}          |                  | App\Http\Controllers\Admin\UserController@update                       | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/user/{user_id}                 |                  | App\Http\Controllers\Admin\UserController@edit                         | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | admin/users                          |                  | App\Http\Controllers\Admin\UserController@index                        | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
+|        | GET|HEAD | api/user                             |                  | Closure                                                                | api                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate:sanctum    |
+|        | GET|HEAD | home                                 | home             | App\Http\Controllers\HomeController@index                              | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | GET|HEAD | login                                | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | POST     | login                                |                  | App\Http\Controllers\Auth\LoginController@login                        | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | POST     | logout                               | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web                                         |
+|        | GET|HEAD | password/confirm                     | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | POST     | password/confirm                     |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
+|        | POST     | password/email                       | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web                                         |
+|        | GET|HEAD | password/reset                       | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web                                         |
+|        | POST     | password/reset                       | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web                                         |
+|        | GET|HEAD | password/reset/{token}               | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web                                         |
+|        | GET|HEAD | register                             | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | POST     | register                             |                  | App\Http\Controllers\Auth\RegisterController@register                  | web                                         |
+|        |          |                                      |                  |                                                                        | App\Http\Middleware\RedirectIfAuthenticated |
+|        | GET|HEAD | sanctum/csrf-cookie                  |                  | Laravel\Sanctum\Http\Controllers\CsrfCookieController@show             | web                                         |
+|        | GET|HEAD | tutorial/{category_slug}             |                  | App\Http\Controllers\Frontend\HomepageController@viewCategoryPost      | web                                         |
+|        | GET|HEAD | tutorial/{category_slug}/{post_slug} |                  | App\Http\Controllers\Frontend\HomepageController@viewPost              | web                                         |
++--------+----------+--------------------------------------+------------------+------------------------------------------------------------------------+---------------------------------------------+

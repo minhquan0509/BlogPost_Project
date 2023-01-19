@@ -12,15 +12,23 @@ class HomepageController extends Controller
     public function index()
     {
         $allCategories = Category::where('status', '0')->get();
-        $latestPosts = Post::where('status', '0')->orderBy('created_at', 'DESC')->take(15)->get();
+
+        $latestPosts = Post::where('status', '0')
+            ->orderBy('created_at', 'DESC')
+            ->take(15)
+            ->get();
         return view('frontend.index', compact('allCategories', 'latestPosts'));
     }
 
     public function viewCategoryPost($category_slug)
     {
-        $category = Category::where('slug', $category_slug)->where('status', 0)->first();
+        $category = Category::where('slug', $category_slug)
+            ->where('status', 0)
+            ->first();
         if ($category) {
-            $posts = Post::where('category_id', $category->id)->where('status', 0)->paginate(1);
+            $posts = Post::where('category_id', $category->id)
+                ->where('status', 0)
+                ->paginate(1);
             return view('frontend.post.index', compact('category', 'posts'));
         } else return redirect('/');
     }
