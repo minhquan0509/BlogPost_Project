@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomepageController;
+use App\Http\Controllers\Frontend\LikeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,8 +42,13 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
 
-//This route for comments system
+//This route for comments
 Route::post('comments', [CommentController::class, 'store']);
+Route::post('delete-comment', [CommentController::class, 'destroy']);
+
+//This route for handling like and unlike post
+Route::post('like-post', [LikeController::class, 'likeHandle']);
+Route::post('unlike-post', [LikeController::class, 'unlikeHandle']);
 
 // This route for authentication users (login,sign up,forgot password,....)
 Auth::routes();

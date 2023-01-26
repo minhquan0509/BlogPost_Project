@@ -83,12 +83,20 @@
                     @else
                         <li>
                             <a class="nav-link btn-danger" href="{{ route('login') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Login</a>
+                                onclick="event.preventDefault(); document.getElementById('login-form').submit();">Login</a>
 
-                            <form id="logout-form" action="{{ route('login') }}" method="get" class="d-none">
+                            <form id="login-form" action="{{ route('login') }}" method="get" class="d-none">
                                 @csrf
                             </form>
+                        </li>
 
+                        <li>
+                            <a class="nav-link btn-danger" href="{{ route('register') }}"
+                                onclick="event.preventDefault(); document.getElementById('register-form').submit();">Register</a>
+
+                            <form id="register-form" action="{{ route('register') }}" method="get" class="d-none">
+                                @csrf
+                            </form>
                         </li>
                     @endif
 

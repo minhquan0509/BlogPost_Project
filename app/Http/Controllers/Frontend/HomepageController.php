@@ -6,13 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomepageController extends Controller
 {
     public function index()
     {
         $allCategories = Category::where('status', '0')->get();
-
         $latestPosts = Post::where('status', '0')
             ->orderBy('created_at', 'DESC')
             ->take(15)

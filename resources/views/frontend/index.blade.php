@@ -38,7 +38,7 @@
     <div class="py-1 bg-gray">
         <div class="container">
             <div class="border p-3 text-center">
-                <h3>Advertise</h3>
+                <h3>Introduction to our blog post</h3>
             </div>
         </div>
     </div>
@@ -51,9 +51,9 @@
                     <h4>Blog post about Technology</h4>
                     <div class="underline"></div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero maiores quo qui enim unde, at sapiente
-                        sint id quidem cupiditate, sunt iste eveniet deleniti possimus suscipit. Commodi tempore illum
-                        veritatis.
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi totam dolore ullam incidunt hic
+                        perspiciatis tempora vel, vero eum rerum, et fugit minima molestiae quam quae ipsam explicabo illum
+                        reprehenderit!
                     </p>
                 </div>
             </div>

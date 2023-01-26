@@ -52,6 +52,7 @@
 |        |          |                                      |                  |                                                                        | App\Http\Middleware\AdminMiddleware         |
 |        | GET|HEAD | api/user                             |                  | Closure                                                                | api                                         |
 |        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate:sanctum    |
+|        | POST     | comments                             |                  | App\Http\Controllers\Frontend\CommentController@store                  | web                                         |
 |        | GET|HEAD | home                                 | home             | App\Http\Controllers\HomeController@index                              | web                                         |
 |        |          |                                      |                  |                                                                        | App\Http\Middleware\Authenticate            |
 |        | GET|HEAD | login                                | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web                                         |
