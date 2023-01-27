@@ -21,6 +21,27 @@
                         <h6 style="color: rgb(65, 72, 133)">Posted by : {{ $post->user->name }} at
                             {{ floor((time() - strtotime($post->created_at)) / (60 * 60 * 24)) }}
                             days ago</h6>
+
+                        @php
+                            $totalLikes = DB::table('like_post')
+                                ->where('post_id', $post->id)
+                                ->count();
+                            $totalComments = DB::table('comments')
+                                ->where('post_id', $post->id)
+                                ->count();
+                        @endphp
+
+                        <button type="button" class="btn btn-labeled btn-primary">
+                            <span class="btn-label"><i class="fa fa-thumbs-up"></i></span> {{ $totalLikes }} people liked
+                            this post</button>
+
+                        <button type="button" class="btn btn-labeled btn-warning">
+                            <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalComments }} comments
+                            for this
+                            post</button>
+
+
+
                     </div>
 
                     {{-- For post's description section --}}
@@ -137,7 +158,7 @@
                                 <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
                                     class="text-decoration-none">
                                     <h6>> {{ $highest_like_post->post->name }} ({{ $highest_like_post->total_likes }}
-                                        likes)
+                                        <span class="btn-label"><i class="fa fa-thumbs-up"></i></span></button>)
                                     </h6>
                                 </a>
                             @endforeach

@@ -80,6 +80,20 @@
                             </form>
 
                         </li>
+
+                        @if (Auth::user()->role_as == '1')
+                            <li>
+                                <a class="nav-link btn-danger" href="{{ url('admin/dashboard') }}"
+                                    onclick="event.preventDefault(); document.getElementById('system-form').submit();">System
+                                    Management</a>
+
+                                <form id="system-form" action="{{ url('admin/dashboard') }}" method="get"
+                                    class="d-none">
+                                    @csrf
+                                </form>
+
+                            </li>
+                        @endif
                     @else
                         <li>
                             <a class="nav-link btn-danger" href="{{ route('login') }}"
