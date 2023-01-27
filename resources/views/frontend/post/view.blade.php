@@ -79,7 +79,7 @@
 
                         <div class="card card-body">
                             <div class="card-title">
-                                <h5 style="color: rgb(176, 136, 35)">Make a comment for this post</h5>
+                                <h5 style="color: rgb(136, 106, 30)">Make a new comment for this post</h5>
                             </div>
                             <form action="{{ url('comments') }}" method="POST">
                                 @csrf
@@ -126,21 +126,42 @@
 
                 <div class="col-md-3">
 
-                    <div class="border p-2">
-                        <h4>Advertising Area</h4>
+                    <div class="card mt-3">
+
+                        <div class="card-header">
+                            <h4>Highest Rate Posts List</h4>
+                        </div>
+
+                        <div class="card-body">
+                            @foreach ($highest_like_posts as $highest_like_post)
+                                <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
+                                    class="text-decoration-none">
+                                    <h6>> {{ $highest_like_post->post->name }} ({{ $highest_like_post->total_likes }}
+                                        likes)
+                                    </h6>
+                                </a>
+                            @endforeach
+                        </div>
+
                     </div>
+
+
+                    {{-- The section for latest post --}}
 
                     <div class="card mt-3">
 
                         <div class="card-header">
-                            <h4>Latest Posts List</h4>
+                            <h4>Latest Posts List about {{ $post->category->name }}</h4>
                         </div>
 
                         <div class="card-body">
                             @foreach ($latest_posts as $latest_post)
                                 <a href="{{ url('tutorial/' . $latest_post->category->slug . '/' . $latest_post->slug) }}"
                                     class="text-decoration-none">
-                                    <h6>> {{ $latest_post->name }}</h6>
+                                    <h6>> {{ $latest_post->name }}
+                                        ({{ floor((time() - strtotime($latest_post->created_at)) / (60 * 60 * 24)) }} days
+                                        ago)
+                                    </h6>
                                 </a>
                             @endforeach
                         </div>

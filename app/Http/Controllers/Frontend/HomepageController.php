@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Like;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomepageController extends Controller
 {
@@ -44,14 +46,21 @@ class HomepageController extends Controller
                 ->where('status', 0)
                 ->where('slug', $post_slug)
                 ->first();
-            //Tìm tất cả các post mà có cùng category
+            //Tìm tất cả các posts mà có cùng category mà được đăng gần nhất
             $latest_posts = Post::where('category_id', $category->id)
                 ->where('status', 0)
                 ->orderBy('created_at', 'DESC')
                 ->take(15)
                 ->get();
-
-            return view('frontend.post.view', compact('post', 'latest_posts'));
+            // Đưa ra tất cả các posts trong hệ thống mà có lượng likes cao nhất
+            $highest_like_posts = Like::groupBy('post_id')
+                ->select('post_id', DB::raw('count(*) as total_likes'))
+                ->having('total_likes', '>', '0')
+                ->orderBy('total_likes', 'DESC')
+                ->take(15)
+                ->get();
+            // Nhét cái đống thông tin này vào phía view để thực hiện render giao diện
+            return view('frontend.post.view', compact('post', 'latest_posts', 'highest_like_posts'));
         } else return redirect('/');
     }
 }
