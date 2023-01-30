@@ -35,10 +35,10 @@
                             <span class="btn-label"><i class="fa fa-thumbs-up"></i></span> {{ $totalLikes }} people liked
                             this post</button>
 
-                        <button type="button" class="btn btn-labeled btn-warning">
+                        <a href="#comment" type="button" class="btn btn-labeled btn-warning">
                             <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalComments }} comments
                             for this
-                            post</button>
+                            post</a>
 
 
 
@@ -92,10 +92,10 @@
                     @endif
 
                     {{-- For comments section --}}
-                    <div class="comment-area mt-4">
+                    <div id="comment" class="comment-area mt-4">
 
                         @if (session('message'))
-                            <h6 class="alert alert-danger mb-3">{{ session('message') }}</h6>
+                            <h6 class="alert alert-success mb-3">{{ session('message') }}</h6>
                         @endif
 
                         <div class="card card-body">
@@ -115,11 +115,12 @@
 
                                 <div class="detail-area">
                                     {{-- Information of the user who commented --}}
-                                    <h6 class="user-name mb-1">
+                                    <h6 class="user-name mb-1 text-primary">
                                         @if ($comment->user)
                                             {{ $comment->user->name }}
                                         @endif
-                                        <small class="ms-3 text-primary">Comment at {{ $comment->created_at }}</small>
+                                        <small class="ms-3 text-secondary postedOn">Comment at
+                                            {{ $comment->created_at }}</small>
                                     </h6>
 
                                     <p class="user-comment mb-1">

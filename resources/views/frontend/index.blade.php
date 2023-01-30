@@ -70,10 +70,10 @@
                 </div>
 
                 @foreach ($allCategories as $category)
-                    <div class="col-md-3 ">
-                        <div class="card card-body mb-3">
+                    <div class="col-md-2 category">
+                        <div class="card card-body mb-3 p-1">
                             <a href="{{ url('tutorial/' . $category->slug) }}" class="text-decoration-none">
-                                <h5 class="text-dark mb-0 text-center">{{ $category->name }}</h5>
+                                <h5 class="text-dark mb-0 text-center category-text">{{ $category->name }}</h5>
                             </a>
                         </div>
                     </div>
@@ -98,11 +98,20 @@
                         <div class="card card-body mb-3 bg-gray shadow">
                             <a href="{{ url('tutorial/' . $latestPost->category->slug . '/' . $latestPost->slug) }}"
                                 class="text-decoration-none">
-                                <h5 class="text-dark mb-0">{{ $latestPost->name }}</h5>
+                                <h5 class="text-primary mb-0">{{ $latestPost->name }}</h5>
                             </a>
-                            <h6>
-                                Posted On: {{ $latestPost->created_at->format('d-m-Y') }}
-                            </h6>
+                            <div class="post-info">
+                                <h5 class="post-author mt-2"><i class="fa-regular fa-user"></i>
+                                    {{ $latestPost->user->name }}
+                                </h5>
+                                <h5 class="postedOn mt-2">
+                                    <i class="fa-regular fa-calendar"></i> Posted On:
+                                    {{ $latestPost->created_at->format('d-m-Y') }}
+                                </h5>
+                            </div>
+                            <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo fuga suscipit deleniti
+                                praesentium beatae eum quibusdam cum a fugit quia, distinctio rem amet. Accusamus, qui! Sint
+                                labore ad quae iure.</h6>
                         </div>
                     @endforeach
 
@@ -110,7 +119,7 @@
 
                 <div class="col-md-4">
                     <div class="border p-3 text-center">
-                        <h3>Advertise</h3>
+                        <h3>Another content</h3>
                     </div>
                 </div>
 

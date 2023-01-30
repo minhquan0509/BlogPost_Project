@@ -70,3 +70,23 @@
     border: 1px solid transparent;
     border-radius: 0.25rem;
 }
+
+.category-text {
+    font-size: 16px !important;
+}
+
+.postedOn {
+    font-style: italic;
+    font-size: 12px;
+    margin: 8 0 8 8 !important;
+    font-weight: 300;
+}
+
+.post-info {
+    display: flex;
+}
+
+.post-author {
+    font-size: 12px;
+    margin-right: 12px;
+}
