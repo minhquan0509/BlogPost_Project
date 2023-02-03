@@ -115,9 +115,6 @@
                                     {{ $latestPost->created_at->format('d-m-Y') }}
                                 </h5>
                             </div>
-                            <h6>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Explicabo fuga suscipit deleniti
-                                praesentium beatae eum quibusdam cum a fugit quia, distinctio rem amet. Accusamus, qui! Sint
-                                labore ad quae iure.</h6>
                         </div>
                     @endforeach
 
