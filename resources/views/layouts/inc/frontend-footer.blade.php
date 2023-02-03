@@ -10,20 +10,24 @@
                 <div class="row">
                     <!--Grid column-->
                     <div class="col-lg-8 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Trường học nghiêm túc</h5>
+                        <h5 class="text-uppercase">About this project</h5>
 
                         <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            Molestiae modi cum ipsam ad, illo possimus laborum ut
-                            reiciendis obcaecati. Ducimus, quas. Corrupti, pariatur eaque?
-                            Reiciendis assumenda iusto sapiente inventore animi?
+                            This blog post is all about technology .
+                            It contains many posts which are related to JS PHP Laravel NodeJS and many of another
+                            programming
+                            languages as well as frameworks .
+                            This blog post is built by PHP Laravel version 8 and the database used in the project is
+                            MySQL.
+                            Please login first to use full services .
+                            The users can interact by posting new posts , like the posts and make comments to it .
                         </p>
                     </div>
                     <!--Grid column-->
 
                     <!--Grid column-->
                     <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase">Thành viên</h5>
+                        <h5 class="text-uppercase">Members</h5>
 
                         <ul class="list-unstyled mb-0">
                             <li>
@@ -59,9 +63,12 @@
             <section class="">
                 <p class="d-flex justify-content-center align-items-center">
                     <span class="me-3">Register for free</span>
-                    <button type="button" class="btn btn-outline-light btn-rounded">
+                    {{-- <button type="button" class="btn btn-outline-light btn-rounded">
                         Sign up!
-                    </button>
+                    </button> --}}
+                    <a href="{{ route('register') }}" class="btn btn-outline-light btn-rounded">
+                        Sign up!
+                    </a>
                 </p>
             </section>
             <!-- Section: CTA -->
@@ -101,8 +108,7 @@
 
         <!-- Copyright -->
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
-            Based in Hanoi. 2023.
-
+            &copy; Made by group 1
         </div>
         <!-- Copyright -->
     </footer>

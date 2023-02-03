@@ -50,10 +50,10 @@
                         <textarea id="mySummernote" name="description" class="form-control" rows="4"></textarea>
                     </div>
 
-                    <div class="mb-3">
+                    {{-- <div class="mb-3">
                         <label for="">Youtube Iframe Link</label>
                         <input type="text" name="yt_iframe" class="form-control">
-                    </div>
+                    </div> --}}
 
                     <h4>SEO Tags</h4>
 

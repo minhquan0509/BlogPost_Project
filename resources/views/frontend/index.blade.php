@@ -51,9 +51,15 @@
                     <h4>Blog post about Technology</h4>
                     <div class="underline"></div>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi totam dolore ullam incidunt hic
-                        perspiciatis tempora vel, vero eum rerum, et fugit minima molestiae quam quae ipsam explicabo illum
-                        reprehenderit!
+                        This blog post is all about web's technologies.
+                        It contains many posts which are related to Javascript PHP Laravel NodeJS ... and many of another
+                        programming languages as well as frameworks.
+                        This blog post is built by PHP programming language using Laravel framework version 8.x and the
+                        database used in the project is
+                        MySQL. Please login first to use full services of us.
+                        The administrators and users can interact with each other by posting new posts , like the posts and
+                        make comments to
+                        it .
                     </p>
                 </div>
             </div>

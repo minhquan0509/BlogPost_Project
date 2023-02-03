@@ -25,6 +25,7 @@ class UserController extends Controller
         $user = User::find($user_id);
         if ($user) {
             $user->role_as = $request->role_as;
+            $user->name = $request->name;
             $user->update();
             return redirect('/admin/users')->with('message', 'Updated Successfully');
         }
