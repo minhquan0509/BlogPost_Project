@@ -11,7 +11,7 @@ use App\Http\Controllers\Frontend\LikeController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 
-
+Route::get('search-post', [HomepageController::class, 'search']);
 // This routes for view post and categories at homepage
 Route::get('/', [HomepageController::class, 'index']);
 Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);

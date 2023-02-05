@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Home Page')
 @section('content')
     {{-- Phần này là nội dung cái thanh carousel trượt để hiển thị tất cả các categories và hình ảnh của nó --}}
     <div class="bg-light py-5">

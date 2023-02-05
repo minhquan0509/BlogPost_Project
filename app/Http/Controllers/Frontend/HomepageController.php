@@ -22,15 +22,27 @@ class HomepageController extends Controller
         return view('frontend.index', compact('allCategories', 'latestPosts'));
     }
 
+    public function search(Request $request)
+    {
+        $search_string = $request->query('search_string');
+        // dd($search_string);
+        $posts = Post::where('name', 'like', '%'.$search_string.'%')->orWhere('description', 'like', '%'.$search_string.'%')->paginate(1);
+        $category = $search_string;
+        // dd($posts->count());
+        return view('frontend.post.index', compact('category', 'posts'));
+        // return view('welcome');
+    }
+
     public function viewCategoryPost($category_slug)
     {
-        $category = Category::where('slug', $category_slug)
+        $Category = Category::where('slug', $category_slug)
             ->where('status', 0)
             ->first();
-        if ($category) {
-            $posts = Post::where('category_id', $category->id)
+        if ($Category) {
+            $posts = Post::where('category_id', $Category->id)
                 ->where('status', 0)
                 ->paginate(1);
+            $category = $Category->name;
             return view('frontend.post.index', compact('category', 'posts'));
         } else return redirect('/');
     }
