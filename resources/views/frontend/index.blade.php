@@ -114,6 +114,8 @@
                                     <i class="fa-regular fa-calendar"></i> Posted On:
                                     {{ $latestPost->created_at->format('d-m-Y') }}
                                 </h5>
+                                <span class="ms-5"><i class="fa-regular fa-thumbs-up"></i> {{ count($latestPost->likes) }} likes</span>
+                                <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($latestPost->comments) }} comments</span>
                             </div>
                         </div>
                     @endforeach

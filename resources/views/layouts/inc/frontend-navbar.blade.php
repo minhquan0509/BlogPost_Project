@@ -21,6 +21,12 @@
 <div class="sticky-top">
     <nav class="navbar navbar-expand-lg navbar-white bg-green">
         <div class="container">
+            @php
+                // Lấy tất cả dữ liệu của categories trong hệ thống
+                $categories = \App\Models\Category::where('navbar_status', '0')
+                    ->where('status', '0')
+                    ->get();
+            @endphp
 
             {{-- <a href="" class="navbar-brand d-inline d-sm-inline d-md-none">Navbar</a> --}}
 
@@ -38,36 +44,20 @@
                         <a class="nav-link active" aria-current="page" href="{{ url('/') }}">Home</a>
                     </li>
 
-                    {{-- <li class="nav-item dropdown">
+                    <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
+                            Category list
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ url('tutorial/' . $category->slug) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
                         </ul>
-                    </li> --}}
-
-                    @php
-                        // Lấy tất cả dữ liệu của categories trong hệ thống
-                        $categories = \App\Models\Category::where('navbar_status', '0')
-                            ->where('status', '0')
-                            ->get();
-                    @endphp
-
-                    {{-- Đưa tất cả các categories để hiển thị ra trên thanh nav bar ở trang home --}}
-
-                    @foreach ($categories as $category)
-                        <li class="nav-item">
-                            <a class="nav-link"
-                                href="{{ url('tutorial/' . $category->slug) }}">{{ $category->name }}</a>
-                        </li>
-                    @endforeach
+                    </li>
 
 
                     @if (Auth::check())
