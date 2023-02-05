@@ -19,7 +19,6 @@
                     @forelse ($posts as $post)
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
-
                                 <a href="{{ url('tutorial/' . $category->slug . '/' . $post->slug) }}"
                                     class="text-decoration-none">
                                     <h3 class="post-heading">{{ $post->name }}</h2>
@@ -27,7 +26,9 @@
 
                                 <h6>
                                     Posted on : {{ $post->created_at->format('d-m-Y') }}
-                                    <span class="ms-3">Created by : {{ $post->user->name }}</span>
+                                    <span class="ms-5">Created by : {{ $post->user->name }}</span>
+                                    <span class="ms-5"><i class="fa-regular fa-thumbs-up"></i> {{ count($post->likes) }} likes</span>
+                                    <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($post->comments) }} comments</span>
                                 </h6>
 
                             </div>
