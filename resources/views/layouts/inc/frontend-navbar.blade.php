@@ -10,7 +10,12 @@
             {{-- Hiển thị phần nội dung bên cạnh cái logo --}}
             <div class="col-md-9 my-auto">
                 <div class="border text-center p-2">
-                    <h5>Content Here</h5>
+                    <form action="/search-post" method="get">
+                        <div class="input-group">
+                            <input type="search" class="form-control rounded" placeholder="Search" name="search_string" />
+                            <button type="submit" class="btn btn-outline-primary">search</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

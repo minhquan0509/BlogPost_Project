@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $category)
+@section('title', $category->meta_title)
+@section('meta_description', $category->meta_description)
+@section('meta_keyword', $category->meta_keyword)
 
 {{-- Phần này là để show tất cả các bài viết thuộc một category nào đó và hiển thị lên giao diện --}}
 
@@ -11,13 +13,13 @@
                 <div class="col-md-9">
 
                     <div class="category-heading">
-                        <h2>Posts about {{ $category }}</h2>
+                        <h2>Posts about {{ $category->name }}</h2>
                     </div>
 
                     @forelse ($posts as $post)
                         <div class="card card-shadow mt-4">
                             <div class="card-body">
-                                <a href="{{ url('tutorial/' . $post->category->slug . '/' . $post->slug) }}"
+                                <a href="{{ url('tutorial/' . $category->slug . '/' . $post->slug) }}"
                                     class="text-decoration-none">
                                     <h3 class="post-heading">{{ $post->name }}</h2>
                                 </a>
