@@ -97,21 +97,21 @@
                     <h4>Latest Posts</h4>
                     <div class="underline"></div>
                 </div>
-
-
-                <div class="col-md-8">
+            </div>
+            <div class="row">
                     @foreach ($latestPosts as $latestPost)
-                        <div class="card card-body mb-3 bg-gray shadow">
-                            <a href="{{ url('tutorial/' . $latestPost->category->slug . '/' . $latestPost->slug) }}"
-                                class="text-decoration-none">
-                                <h5 class="text-primary mb-0">{{ $latestPost->name }}</h5>
-                            </a>
-                            <div class="post-info">
+                        <div class="card card-body mb-3 bg-gray shadow col col-5">
+                            <img src="{{ asset('uploads/cover/' . $latestPost->cover) }}" alt="" style="max-height:300px; object-fit: contain; border-radius: 2px;">
+                                <a href="{{ url('tutorial/' . $latestPost->category->slug . '/' . $latestPost->slug) }}"
+                                    class="text-decoration-none">
+                                    <h5 class="text-primary mb-0 mt-2">{{ $latestPost->name }}</h5>
+                                </a>
+                            <div class="post-info mt-2">
                                 <h5 class="post-author mt-2"><i class="fa-regular fa-user"></i>
                                     {{ $latestPost->user->name }}
                                 </h5>
                                 <h5 class="postedOn mt-2">
-                                    <i class="fa-regular fa-calendar"></i> Posted On:
+                                    <i class="fa-regular fa-calendar"></i> Date:
                                     {{ $latestPost->created_at->format('d-m-Y') }}
                                 </h5>
                                 <span class="ms-5"><i class="fa-regular fa-thumbs-up"></i> {{ count($latestPost->likes) }} likes</span>
@@ -120,13 +120,11 @@
                         </div>
                     @endforeach
 
-                </div>
-
-                <div class="col-md-4">
+                <!-- <div class="col-md-3">
                     <div class="border p-3 text-center">
                         <h3>Another content</h3>
                     </div>
-                </div>
+                </div> -->
 
             </div>
         </div>

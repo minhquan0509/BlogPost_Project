@@ -34,6 +34,12 @@ class PostController extends Controller
         $post->slug = Str::slug($data['slug']);
         $post->description = $data['description'];
         // $post->yt_iframe = $data['yt_iframe'];
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/cover/', $filename);
+            $post->cover = $filename;
+        }
         $post->meta_title = $data['meta_title'];
         $post->meta_description = $data['meta_description'];
         $post->meta_keyword = $data['meta_keyword'];
@@ -59,6 +65,12 @@ class PostController extends Controller
         $post->slug = Str::slug($data['slug']);
         $post->description = $data['description'];
         // $post->yt_iframe = $data['yt_iframe'];
+        if ($request->hasFile('cover')) {
+            $file = $request->file('cover');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move('uploads/cover/', $filename);
+            $post->cover = $filename;
+        }
         $post->meta_title = $data['meta_title'];
         $post->meta_description = $data['meta_description'];
         $post->meta_keyword = $data['meta_keyword'];

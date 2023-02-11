@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
     protected $table = 'posts';
     protected $fillable = [
-        'category_id', 'name', 'slug', 'description', 'yt_iframe', 'meta_title', 'meta_description', 'meta_keyword', 'status', 'created_by'
+        'category_id', 'name', 'slug', 'description', 'cover', 'meta_title', 'meta_description', 'meta_keyword', 'status', 'created_by'
     ];
 
     public function category()
