@@ -8,15 +8,15 @@
     <div class="py-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-9">
 
                     <div class="category-heading">
                         <h2>Posts about {{ $category}}</h2>
                     </div>
 
                     @forelse ($posts as $post)
-                        <div class="card card-shadow mt-4">
-                            <div class="card-body">
+                        <div class="mt-4 col-md-6">
+                            <div class="card card-body mb-3 bg-gray shadow">
+                                <img src="{{ asset('uploads/cover/' . $post->cover) }}" alt="" style="max-height:300px; object-fit: contain;">
                                 <a href="{{ url('tutorial/' . $post->category->slug . '/' . $post->slug) }}"
                                     class="text-decoration-none">
                                     <h3 class="post-heading">{{ $post->name }}</h2>
@@ -38,15 +38,6 @@
                             </div>
                         </div>
                     @endforelse
-
-                </div>
-
-                <div class="col-md-3">
-                    <div class="border p-2">
-                        <h4>Another posts</h4>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>

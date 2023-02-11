@@ -100,7 +100,8 @@
             </div>
             <div class="row">
                     @foreach ($latestPosts as $latestPost)
-                        <div class="card card-body mb-3 bg-gray shadow col col-5">
+                    <div class="mt-4 col-md-6">
+                        <div class="card card-body mb-3 bg-gray shadow">
                             <img src="{{ asset('uploads/cover/' . $latestPost->cover) }}" alt="" style="max-height:300px; object-fit: contain; border-radius: 2px;">
                                 <a href="{{ url('tutorial/' . $latestPost->category->slug . '/' . $latestPost->slug) }}"
                                     class="text-decoration-none">
@@ -118,6 +119,7 @@
                                 <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($latestPost->comments) }} comments</span>
                             </div>
                         </div>
+                    </div>
                     @endforeach
 
                 <!-- <div class="col-md-3">

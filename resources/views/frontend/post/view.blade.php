@@ -12,12 +12,16 @@
             <div class="row">
                 <div class="col-md-9">
 
-                    <div class="category-heading">
-                        <h2>{!! $post->name !!}</h2>
-                    </div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/tutorial/{{ strtolower($post->category->name) }}">{{ $post->category->name }}</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{ $post->name }}</li>
+                    </ol>
+                </nav>
 
                     <div class="mt-3">
-                        <h5 style="color: rgb(189, 24, 24)">{{ $post->category->name . ' / ' . $post->name }}</h5>
+                        <h2 style="color: rgb(189, 24, 24)">{{ $post->category->name . ' / ' . $post->name }}</h5>
                         <h6 style="color: rgb(65, 72, 133)">Posted by : {{ $post->user->name }} at
                             {{ floor((time() - strtotime($post->created_at)) / (60 * 60 * 24)) }}
                             days ago</h6>

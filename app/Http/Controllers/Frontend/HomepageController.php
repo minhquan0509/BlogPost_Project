@@ -41,7 +41,7 @@ class HomepageController extends Controller
         if ($Category) {
             $posts = Post::where('category_id', $Category->id)
                 ->where('status', 0)
-                ->paginate(1);
+                ->paginate(4);
             $category = $Category->name;
             return view('frontend.post.index', compact('category', 'posts'));
         } else return redirect('/');
