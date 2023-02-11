@@ -26,10 +26,10 @@ class HomepageController extends Controller
     {
         $search_string = $request->query('search_string');
         // dd($search_string);
-        $posts = Post::where('name', 'like', '%'.$search_string.'%')->orWhere('description', 'like', '%'.$search_string.'%')->paginate(1);
+        $posts = Post::where('name', 'like', '%'.$search_string.'%')->orWhere('description', 'like', '%'.$search_string.'%')->take(10)->get();
         $category = $search_string;
-        // dd($posts->count());
-        return view('frontend.post.index', compact('category', 'posts'));
+        // dd($posts);
+        return view('frontend.post.search', compact('category', 'posts'));
         // return view('welcome');
     }
 
@@ -41,7 +41,7 @@ class HomepageController extends Controller
         if ($Category) {
             $posts = Post::where('category_id', $Category->id)
                 ->where('status', 0)
-                ->paginate(1);
+                ->paginate(4);
             $category = $Category->name;
             return view('frontend.post.index', compact('category', 'posts'));
         } else return redirect('/');

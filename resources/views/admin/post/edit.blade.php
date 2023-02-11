@@ -25,7 +25,7 @@
                     </div>
                 @endif
 
-                <form action="{{ url('admin/update-post/' . $post->id) }}" method="post">
+                <form action="{{ url('admin/update-post/' . $post->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="mb-3">
@@ -60,6 +60,11 @@
                         <label for="">Youtube Iframe Link</label>
                         <input type="text" name="yt_iframe" class="form-control" value="{{ $post->yt_iframe }}">
                     </div> --}}
+
+                    <div class="mb-3">
+                        <label for="">Cover image</label>
+                        <input type="file" name="cover" class="form-control" value="$post->cover">
+                    </div>
 
                     {{-- <h4>SEO Tags</h4> --}}
 

@@ -22,7 +22,7 @@
             </div>
 
             <div class="card-body">
-                <form action="{{ url('admin/add-post') }}" method="post">
+                <form action="{{ url('admin/add-post') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="">Category</label>
@@ -50,10 +50,10 @@
                         <textarea id="mySummernote" name="description" class="form-control" rows="4"></textarea>
                     </div>
 
-                    {{-- <div class="mb-3">
-                        <label for="">Youtube Iframe Link</label>
-                        <input type="text" name="yt_iframe" class="form-control">
-                    </div> --}}
+                    <div class="mb-3">
+                        <label for="">Cover image</label>
+                        <input type="file" name="cover" class="form-control">
+                    </div>
 
                     <h4>SEO Tags</h4>
 

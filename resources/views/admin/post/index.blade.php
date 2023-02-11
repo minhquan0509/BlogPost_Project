@@ -36,13 +36,13 @@
                                 <td>{{ $item->id }}</td>
                                 <td>{{ $item->category->name }}</td>
                                 <td>{{ $item->name }}</td>
-                                <td>{{ $item->status ? 'Hidden' : 'Visible' }}</td>
+                                <td><span class="badge {{ $item->status ? 'badge-secondary' : 'badge-success' }}">{{ $item->status ? 'Hidden' : 'Visible' }}</span></td>
                                 <td>
-                                    <a href="{{ url('/admin/post/' . $item->id) }}" class="btn btn-danger">Edit</a>
+                                    <a href="{{ url('/admin/post/' . $item->id) }}" class="btn btn-warning">Edit</a>
                                 </td>
                                 <td>
                                     <a href="{{ url('/admin/delete-post/' . $item->id) }}"
-                                        class="btn btn-success">Delete</a>
+                                        class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
