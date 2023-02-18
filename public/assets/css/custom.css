@@ -90,3 +90,28 @@
     font-size: 12px;
     margin-right: 12px;
 }
+
+.question-card{
+    position: relative;
+}
+
+.question-action__wrapper{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+.action-btn{
+    font-size: 16px;
+    padding: 0 1px;
+    border-radius: 20%;
+    color: #fff;
+}
+
+.edit-btn{
+    background-color: goldenrod;
+}
+
+.delete-btn{
+    background-color: tomato;
+}

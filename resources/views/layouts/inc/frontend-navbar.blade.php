@@ -72,6 +72,10 @@
                             Questions list
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item"
+                                    href="/questions">All</a>
+                            </li>
                             @foreach ($categories as $category)
                                 <li>
                                     <a class="dropdown-item"

@@ -20,10 +20,7 @@
                             <h6>
                                 Posted on : {{ $question->created_at->format('d-m-Y') }}
                                 <span class="ms-5">Created by : {{ $question->user->name }}</span>
-                                {{-- <span class="ms-5"><i class="fa-regular fa-thumbs-up"></i> {{ count($post->likes) }}
-                                    likes</span>
-                                <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($post->comments) }}
-                                    comments</span> --}}
+                                <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($question->answers) }} answers</span>
                             </h6>
 
                         </div>
@@ -43,6 +40,5 @@
 
             </div>
         </div>
-    </div>
     </div>
 @endsection

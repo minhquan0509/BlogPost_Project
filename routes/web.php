@@ -68,6 +68,7 @@ Route::prefix('questions')->middleware('auth')->group(function () {
 });
 
 Route::prefix('questions')->group(function () {
+    Route::get('/', [QuestionController::class, 'viewAllQuestion']);
     Route::get('/{category_slug}', [QuestionController::class, 'viewCategoryQuestion']);
     Route::get('/{category_slug}/{question_slug}', [QuestionController::class, 'viewQuestion']);
 });

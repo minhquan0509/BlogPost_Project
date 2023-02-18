@@ -72,6 +72,11 @@ class QuestionController extends Controller
         }
     }
 
+    public function viewAllQuestion()
+    {
+        $questions = Question::all();
+        return view('question.index', compact('questions'));
+    }
 
     public function viewCategoryQuestion(string $category_slug)
     {

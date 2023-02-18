@@ -66,6 +66,9 @@
             border: 1px solid transparent;
             border-radius: 0.25rem;
         }
+        main{
+            min-height: calc( 100vh - 400px );
+        }
     </style>
 
 
