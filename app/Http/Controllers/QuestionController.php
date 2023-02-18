@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\QuestionFormRequest;
+use App\Models\Answer;
 use App\Models\Category;
 use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class QuestionController extends Controller
 {
@@ -97,14 +99,14 @@ class QuestionController extends Controller
             //     ->take(15)
             //     ->get();
             // Đưa ra tất cả các questions trong hệ thống mà có lượng likes cao nhất
-            // $highest_like_posts = Like::groupBy('post_id')
-            //     ->select('post_id', DB::raw('count(*) as total_likes'))
-            //     ->having('total_likes', '>', '0')
-            //     ->orderBy('total_likes', 'DESC')
-            //     ->take(15)
-            //     ->get();
+            $highest_answers = Answer::groupBy('question_id')
+                ->select('question_id', DB::raw('count(*) as total_answers'))
+                ->having('total_answers', '>', '0')
+                ->orderBy('total_answers', 'DESC')
+                ->take(15)
+                ->get();
             // Nhét cái đống thông tin này vào phía view để thực hiện render giao diện
-            return view('question.view-detail-question', compact('question'));
+            return view('question.view-detail-question', compact('question', 'highest_answers'));
         } else return redirect('/');
     }
 }

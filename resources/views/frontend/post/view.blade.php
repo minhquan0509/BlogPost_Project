@@ -12,37 +12,41 @@
             <div class="row">
                 <div class="col-md-9">
 
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item"><a href="/tutorial/{{ strtolower($post->category->name) }}">{{ $post->category->name }}</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{ $post->name }}</li>
-                    </ol>
-                </nav>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="/">Home</a></li>
+                            <li class="breadcrumb-item"><a
+                                    href="/tutorial/{{ strtolower($post->category->name) }}">{{ $post->category->name }}</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ $post->name }}</li>
+                        </ol>
+                    </nav>
 
                     <div class="mt-3">
                         <h2 style="color: rgb(189, 24, 24)">{{ $post->category->name . ' / ' . $post->name }}</h5>
-                        <h6 style="color: rgb(65, 72, 133)">Posted by : {{ $post->user->name }} at
-                            {{ floor((time() - strtotime($post->created_at)) / (60 * 60 * 24)) }}
-                            days ago</h6>
+                            <h6 style="color: rgb(65, 72, 133)">Posted by : {{ $post->user->name }} at
+                                {{ floor((time() - strtotime($post->created_at)) / (60 * 60 * 24)) }}
+                                days ago</h6>
 
-                        @php
-                            $totalLikes = DB::table('like_post')
-                                ->where('post_id', $post->id)
-                                ->count();
-                            $totalComments = DB::table('comments')
-                                ->where('post_id', $post->id)
-                                ->count();
-                        @endphp
+                            @php
+                                $totalLikes = DB::table('like_post')
+                                    ->where('post_id', $post->id)
+                                    ->count();
+                                $totalComments = DB::table('comments')
+                                    ->where('post_id', $post->id)
+                                    ->count();
+                            @endphp
 
-                        <button type="button" class="btn btn-labeled btn-primary">
-                            <span class="btn-label"><i class="fa fa-thumbs-up"></i></span> {{ $totalLikes }} people liked
-                            this post</button>
+                            <button type="button" class="btn btn-labeled btn-primary">
+                                <span class="btn-label"><i class="fa fa-thumbs-up"></i></span> {{ $totalLikes }} people
+                                liked
+                                this post</button>
 
-                        <a href="#comment" type="button" class="btn btn-labeled btn-warning">
-                            <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalComments }} comments
-                            for this
-                            post</a>
+                            <a href="#comment" type="button" class="btn btn-labeled btn-warning">
+                                <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalComments }}
+                                comments
+                                for this
+                                post</a>
 
 
 
@@ -162,8 +166,8 @@
                             @foreach ($highest_like_posts as $highest_like_post)
                                 <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
                                     class="text-decoration-none">
-                                    <h6>▶ {{ $highest_like_post->post->name }} ({{ $highest_like_post->total_likes }}
-                                        <i class="fa fa-thumbs-up"></i>)
+                                    <h6>▶ ({{ $highest_like_post->total_likes }}
+                                        <i class="fa fa-thumbs-up"></i>) {{ $highest_like_post->post->name }}
                                     </h6>
                                 </a>
                             @endforeach
@@ -184,9 +188,8 @@
                             @foreach ($latest_posts as $latest_post)
                                 <a href="{{ url('tutorial/' . $latest_post->category->slug . '/' . $latest_post->slug) }}"
                                     class="text-decoration-none">
-                                    <h6>> {{ $latest_post->name }}
-                                        ({{ floor((time() - strtotime($latest_post->created_at)) / (60 * 60 * 24)) }} days
-                                        ago)
+                                    <h6>▶({{ floor((time() - strtotime($latest_post->created_at)) / (60 * 60 * 24)) }} days
+                                        ago) {{ $latest_post->name }}
                                     </h6>
                                 </a>
                             @endforeach

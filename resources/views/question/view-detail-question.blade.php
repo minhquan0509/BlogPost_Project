@@ -22,25 +22,23 @@
                                 {{ floor((time() - strtotime($question->created_at)) / (60 * 60 * 24)) }}
                                 days ago</h6>
 
-                            {{-- @php
-                                $totalLikes = DB::table('like_post')
-                                    ->where('post_id', $post->id)
+                            @php
+                                // $totalLikes = DB::table('like_post')
+                                //     ->where('post_id', $post->id)
+                                //     ->count();
+                                $totalAnswers = DB::table('answers')
+                                    ->where('question_id', $question->id)
                                     ->count();
-                                $totalComments = DB::table('comments')
-                                    ->where('post_id', $post->id)
-                                    ->count();
-                            @endphp --}}
+                            @endphp
 
                             {{-- <button type="button" class="btn btn-labeled btn-primary"> --}}
                             {{-- <span class="btn-label"><i class="fa fa-thumbs-up"></i></span> {{ $totalLikes }} people
                             liked
                             this post</button> --}}
 
-                            {{-- <a href="#comment" type="button" class="btn btn-labeled btn-warning">
-                                <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalComments }}
-                                comments
-                                for this
-                                post</a> --}}
+                            <a href="#comment" type="button" class="btn btn-labeled btn-warning">
+                                <span class="btn-label"><i class="fa-solid fa-comment"></i></span> {{ $totalAnswers }}
+                                answers for this answers</a>
 
                     </div>
 
@@ -148,20 +146,20 @@
 
                 </div>
 
-                {{-- <div class="col-md-3">
+                <div class="col-md-3">
 
                     <div class="card mt-3">
 
                         <div class="card-header">
-                            <h4>Highest Rate Posts List</h4>
+                            <h4>Highest interaction questions</h4>
                         </div>
 
                         <div class="card-body">
-                            @foreach ($highest_like_posts as $highest_like_post)
-                                <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
+                            @foreach ($highest_answers as $highest_answer)
+                                <a href="{{ url('questions/' . $highest_answer->question->category->slug . '/' . $highest_answer->question->slug) }}"
                                     class="text-decoration-none">
-                                    <h6>▶ {{ $highest_like_post->post->name }} ({{ $highest_like_post->total_likes }}
-                                        <i class="fa fa-thumbs-up"></i>)
+                                    <h6>▶({{ $highest_answer->total_answers }}
+                                        <i class="fa-regular fa-comment"></i>) {{ $highest_answer->question->title }}
                                     </h6>
                                 </a>
                             @endforeach
@@ -169,10 +167,7 @@
 
                     </div>
 
-
-
-
-                    <div class="card mt-3">
+                    {{-- <div class="card mt-3">
 
                         <div class="card-header">
                             <h4>Latest Posts List about {{ $post->category->name }}</h4>
@@ -190,9 +185,9 @@
                             @endforeach
                         </div>
 
-                    </div>
+                    </div> --}}
 
-                </div> --}}
+                </div>
 
             </div>
         </div>
