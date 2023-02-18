@@ -65,6 +65,22 @@
                         </ul>
                     </li>
 
+                    {{-- For questions list --}}
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Questions list
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            @foreach ($categories as $category)
+                                <li>
+                                    <a class="dropdown-item"
+                                        href="{{ url('questions/' . $category->slug) }}">{{ $category->name }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </li>
+
 
                     @if (Auth::check())
 

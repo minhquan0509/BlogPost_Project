@@ -18,10 +18,6 @@ class QuestionController extends Controller
         return view('question.user-question', compact('questions'));
     }
 
-    public function show()
-    {
-    }
-
     public function create()
     {
         $category = Category::where('status', '0')->get();
@@ -72,5 +68,43 @@ class QuestionController extends Controller
             $question->delete();
             return redirect(url('questions/my-questions'))->with('msg', 'Delete question successfully...');
         }
+    }
+
+
+    public function viewCategoryQuestion(string $category_slug)
+    {
+        $category = Category::where('slug', $category_slug)
+            ->where('status', 0)
+            ->first();
+        if ($category) {
+            $questions = Question::where('category_id', $category->id)->paginate(4);
+            $category = $category->name;
+            return view('question.view-questions-with-category', compact('category', 'questions'));
+        } else return redirect('/');
+    }
+
+    public function viewQuestion(string $category_slug, string $question_slug)
+    {
+        $category = Category::where('slug', $category_slug)->where('status', 0)->first();
+        if ($category) {
+            $question = Question::where('category_id', $category->id)
+                ->where('slug', $question_slug)
+                ->first();
+            //Tìm tất cả các questions mà có cùng category mà được đăng gần nhất
+            // $latest_posts = Post::where('category_id', $category->id)
+            //     ->where('status', 0)
+            //     ->orderBy('created_at', 'DESC')
+            //     ->take(15)
+            //     ->get();
+            // Đưa ra tất cả các questions trong hệ thống mà có lượng likes cao nhất
+            // $highest_like_posts = Like::groupBy('post_id')
+            //     ->select('post_id', DB::raw('count(*) as total_likes'))
+            //     ->having('total_likes', '>', '0')
+            //     ->orderBy('total_likes', 'DESC')
+            //     ->take(15)
+            //     ->get();
+            // Nhét cái đống thông tin này vào phía view để thực hiện render giao diện
+            return view('question.view-detail-question', compact('question'));
+        } else return redirect('/');
     }
 }

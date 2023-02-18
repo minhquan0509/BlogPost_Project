@@ -103,6 +103,7 @@ class CategoryController extends Controller
             }
             //Trước khi xóa 1 category , thực hiện xóa tất cả các bài posts liên quan đến nó
             $category->posts()->delete();
+            $category->questions()->delete();
             $category->delete();
 
             return redirect('admin/category')->with('message', 'Category is deleted Successfully');

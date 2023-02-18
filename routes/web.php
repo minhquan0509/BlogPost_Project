@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\LikeController;
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('search-post', [HomepageController::class, 'search']);
 // This routes for view post and categories at homepage
 Route::get('/', [HomepageController::class, 'index']);
-Route::get('tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
+Route::get('/tutorial/{category_slug}', [HomepageController::class, 'viewCategoryPost']);
 Route::get('/tutorial/{category_slug}/{post_slug}', [HomepageController::class, 'viewPost']);
 
 // This routes for administrator to do CRUD with categories,users,posts...
@@ -43,7 +44,7 @@ Route::prefix('admin')->middleware('auth', 'isAdmin')->group(function () {
     Route::post('/update-user/{user_id}', [UserController::class, 'update']);
 });
 
-//This route for comments
+//This route for comments to a post
 Route::post('comments', [CommentController::class, 'store']);
 Route::post('delete-comment', [CommentController::class, 'destroy']);
 
@@ -65,3 +66,12 @@ Route::prefix('questions')->middleware('auth')->group(function () {
     Route::put('/update-question/{question_id}', [QuestionController::class, 'update']);
     Route::get('/delete-question/{question_id}', [QuestionController::class, 'delete']);
 });
+
+Route::prefix('questions')->group(function () {
+    Route::get('/{category_slug}', [QuestionController::class, 'viewCategoryQuestion']);
+    Route::get('/{category_slug}/{question_slug}', [QuestionController::class, 'viewQuestion']);
+});
+
+//This route for answer to a post
+Route::post('answer', [AnswerController::class, 'store']);
+Route::post('delete-answer', [AnswerController::class, 'destroy']);
