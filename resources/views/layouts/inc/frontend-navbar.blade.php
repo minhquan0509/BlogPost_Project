@@ -12,7 +12,8 @@
                 <div class="border text-center p-2">
                     <form action="/search-post" method="get">
                         <div class="input-group">
-                            <input type="search" class="form-control rounded" placeholder="Search" name="search_string" />
+                            <input type="search" class="form-control rounded" placeholder="Search"
+                                name="search_string" />
                             <button type="submit" class="btn btn-outline-primary">search</button>
                         </div>
                     </form>
@@ -66,6 +67,11 @@
 
 
                     @if (Auth::check())
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('questions/my-questions') }}">My questions</a>
+                        </li>
+
                         <li>
                             <a class="nav-link btn-danger" href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
@@ -75,6 +81,7 @@
                             </form>
 
                         </li>
+
 
                         @if (Auth::user()->role_as == '1')
                             <li>

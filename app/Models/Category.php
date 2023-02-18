@@ -17,4 +17,9 @@ class Category extends Model
     {
         return $this->hasMany(Post::class, 'category_id', 'id');
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class, 'category_id', 'id');
+    }
 }

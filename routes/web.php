@@ -9,6 +9,7 @@ use App\Http\Controllers\Frontend\CommentController;
 use App\Http\Controllers\Frontend\HomepageController;
 use App\Http\Controllers\Frontend\LikeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuestionController;
 use Illuminate\Support\Facades\Auth;
 
 Route::get('search-post', [HomepageController::class, 'search']);
@@ -53,3 +54,14 @@ Route::post('unlike-post', [LikeController::class, 'unlikeHandle']);
 // This route for authentication users (login,sign up,forgot password,....)
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+//This route for user questions
+
+Route::prefix('questions')->middleware('auth')->group(function () {
+    Route::get('/my-questions', [QuestionController::class, 'index']);
+    Route::get('/add-question', [QuestionController::class, 'create']);
+    Route::post('/add-question', [QuestionController::class, 'save']);
+    Route::get('/edit-question/{question_id}', [QuestionController::class, 'edit']);
+    Route::put('/update-question/{question_id}', [QuestionController::class, 'update']);
+    Route::get('/delete-question/{question_id}', [QuestionController::class, 'delete']);
+});
