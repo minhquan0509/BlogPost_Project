@@ -102,7 +102,7 @@
                     @foreach ($latestPosts as $latestPost)
                     <div class="mt-4 col-md-6">
                         <div class="card card-body mb-3 bg-gray shadow">
-                            <img src="{{ asset('uploads/cover/' . $latestPost->cover) }}" alt="" style="max-height:300px; object-fit: contain; border-radius: 2px;">
+                            <img src="{{ asset('uploads/cover/' . $latestPost->cover) }}" alt="" style="height:300px; object-fit: contain; border-radius: 2px;">
                                 <a href="{{ url('tutorial/' . $latestPost->category->slug . '/' . $latestPost->slug) }}"
                                     class="text-decoration-none">
                                     <h5 class="text-primary mb-0 mt-2">{{ $latestPost->name }}</h5>

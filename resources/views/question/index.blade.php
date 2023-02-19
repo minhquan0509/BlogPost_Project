@@ -15,7 +15,7 @@
                         <div class="card card-body mb-3 bg-gray shadow">
                             <a href="{{ url('questions/' . $question->category->slug . '/' . $question->slug) }}"
                                 class="text-decoration-none">
-                                <h5 class="text-primary mb-0 mt-2">{{ $question->title }}</h5>
+                                <h5 class="text-primary mb-0 mt-2">{{ strlen($question->title) < 70 ? $question->title : substr($question->title, 0, 70) . '...' }}</h5>
                             </a>
                             <div class="post-info mt-2">
                                 <h5 class="post-author mt-2"><i class="fa-regular fa-user"></i>
