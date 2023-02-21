@@ -25,7 +25,10 @@
                                     <i class="fa-regular fa-calendar"></i> Date:
                                     {{ $question->created_at->format('d-m-Y') }}
                                 </h5>
-                                <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($question->answers) }} answers</span>
+                                <span class="ms-5 me-4"><i class="fa-regular fa-comment"></i> {{ count($question->answers) }} answers</span>
+                                <div>
+                                    <span class="badge badge-info ">{{$question->category->name}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>

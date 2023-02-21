@@ -41,6 +41,7 @@ class HomepageController extends Controller
         if ($Category) {
             $posts = Post::where('category_id', $Category->id)
                 ->where('status', 0)
+                ->orderBy('created_at','DESC')
                 ->paginate(4);
             $category = $Category->name;
             return view('frontend.post.index', compact('category', 'posts'));

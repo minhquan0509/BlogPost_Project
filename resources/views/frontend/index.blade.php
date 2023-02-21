@@ -108,15 +108,18 @@
                                     <h5 class="text-primary mb-0 mt-2">{{ $latestPost->name }}</h5>
                                 </a>
                             <div class="post-info mt-2">
-                                <h5 class="post-author mt-2"><i class="fa-regular fa-user"></i>
+                                <h5 class="post-author mt-1"><i class="fa-regular fa-user"></i>
                                     {{ $latestPost->user->name }}
                                 </h5>
-                                <h5 class="postedOn mt-2">
+                                <h5 class="postedOn mt-1">
                                     <i class="fa-regular fa-calendar"></i> Date:
                                     {{ $latestPost->created_at->format('d-m-Y') }}
                                 </h5>
                                 <span class="ms-5"><i class="fa-regular fa-thumbs-up"></i> {{ count($latestPost->likes) }} likes</span>
-                                <span class="ms-5"><i class="fa-regular fa-comment"></i> {{ count($latestPost->comments) }} comments</span>
+                                <span class="ms-5 me-4"><i class="fa-regular fa-comment"></i> {{ count($latestPost->comments) }} comments</span>
+                                <div>
+                                    <span class="badge badge-info ">{{$latestPost->category->name}}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
