@@ -163,7 +163,7 @@
                         </div>
 
                         <div class="card-body">
-                            @if($highest_like_posts)
+                            @if(count($highest_like_posts) > 0)
                                 @foreach ($highest_like_posts as $highest_like_post)
                                     <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
                                         class="text-decoration-none">

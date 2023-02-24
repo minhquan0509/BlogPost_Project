@@ -155,7 +155,7 @@
                         </div>
 
                         <div class="card-body">
-                            @if($highest_answers)
+                            @if(count($highest_answers) > 0)
                                 @foreach ($highest_answers as $highest_answer)
                                     <a href="{{ url('questions/' . $highest_answer->question->category->slug . '/' . $highest_answer->question->slug) }}"
                                         class="text-decoration-none">
