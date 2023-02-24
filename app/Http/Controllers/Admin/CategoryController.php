@@ -37,7 +37,7 @@ class CategoryController extends Controller
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('uploads/category/', $filename);
+            Storage::disk('s3')->put('uploads/category/'.$filename, file_get_contents($file));
             $category->image = $filename;
         }
         $category->meta_title = $data['meta_title'];
@@ -72,13 +72,12 @@ class CategoryController extends Controller
         //Check if has image
         if ($request->hasFile('image')) {
 
-            $destination = 'uploads/category/' . $category->image;
-            if (File::exists($destination)) {
-                File::delete($destination);
+            if($category->image){
+                Storage::disk('s3')->delete('uploads/category/'.$category->image);
             }
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('uploads/category/', $filename);
+            Storage::disk('s3')->put('uploads/cover/'.$filename, file_get_contents($file));
             $category->image = $filename;
         }
         $category->meta_title = $data['meta_title'];

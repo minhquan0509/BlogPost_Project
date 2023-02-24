@@ -15,7 +15,7 @@
                     @forelse ($posts as $post)
                     <div class="mt-4 col-md-6">
                             <div class="card card-body mb-3 bg-gray shadow">
-                                <img src="{{ asset('uploads/cover/' . $post->cover) }}" alt="" style="height:300px; object-fit: contain;">
+                                <img src="{{ Storage::disk('s3')->url('uploads/cover/'. $post->cover) }}" alt="" style="height:300px; object-fit: contain;">
                                 <a href="{{ url('tutorial/' . $post->category->slug . '/' . $post->slug) }}"
                                     class="text-decoration-none">
                                     <h3 class="post-heading">{{ strlen($post->name) < 48 ? $post->name : substr($post->name, 0, 48) . '...' }}</h2>

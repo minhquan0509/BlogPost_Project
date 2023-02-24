@@ -10,6 +10,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -37,7 +38,7 @@ class PostController extends Controller
         if ($request->hasFile('cover')) {
             $file = $request->file('cover');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('uploads/cover/', $filename);
+            Storage::disk('s3')->put('uploads/cover/'.$filename, file_get_contents($file));
             $post->cover = $filename;
         }
         $post->meta_title = $data['meta_title'];
@@ -66,9 +67,12 @@ class PostController extends Controller
         $post->description = $data['description'];
         // $post->yt_iframe = $data['yt_iframe'];
         if ($request->hasFile('cover')) {
+            if($post->cover){
+                Storage::disk('s3')->delete('uploads/cover/'.$post->cover);
+            }
             $file = $request->file('cover');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move('uploads/cover/', $filename);
+            Storage::disk('s3')->put('uploads/cover/'.$filename, file_get_contents($file));
             $post->cover = $filename;
         }
         $post->meta_title = $data['meta_title'];
