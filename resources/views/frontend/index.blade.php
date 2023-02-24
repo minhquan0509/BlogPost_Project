@@ -15,7 +15,7 @@
                                 <a href="{{ url('tutorial/' . $category->slug) }}" class="text-decoration-none">
                                     <div class="card">
                                         <img height="140px" width="100px"
-                                            src="{{ Storage::disk('s3')->url('uploads/category/'. $category->image) }}" alt="Image">
+                                            src="{{ Storage::disk('s3')->url('uploads/cover/'. $category->image) }}" alt="Image">
                                         <div class="card-body text-center">
                                             <h5 class="text-dark">{{ $category->name }}</h5>
                                         </div>

@@ -78,7 +78,7 @@ class CategoryController extends Controller
             }
             $file = $request->file('image');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            Storage::disk('s3')->put('uploads/cover/'.$filename, file_get_contents($file));
+            Storage::disk('s3')->put('uploads/category/'.$filename, file_get_contents($file));
             $category->image = $filename;
         }
         $category->meta_title = $data['meta_title'];
