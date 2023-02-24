@@ -155,14 +155,16 @@
                         </div>
 
                         <div class="card-body">
-                            @foreach ($highest_answers as $highest_answer)
-                                <a href="{{ url('questions/' . $highest_answer->question->category->slug . '/' . $highest_answer->question->slug) }}"
-                                    class="text-decoration-none">
-                                    <h6>▶({{ $highest_answer->total_answers }}
-                                        <i class="fa-regular fa-comment"></i>) {{ $highest_answer->question->title }}
-                                    </h6>
-                                </a>
-                            @endforeach
+                            @if($highest_answers)
+                                @foreach ($highest_answers as $highest_answer)
+                                    <a href="{{ url('questions/' . $highest_answer->question->category->slug . '/' . $highest_answer->question->slug) }}"
+                                        class="text-decoration-none">
+                                        <h6>▶({{ $highest_answer->total_answers }}
+                                            <i class="fa-regular fa-comment"></i>) {{ $highest_answer->question->title }}
+                                        </h6>
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
 
                     </div>

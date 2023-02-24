@@ -163,14 +163,16 @@
                         </div>
 
                         <div class="card-body">
-                            @foreach ($highest_like_posts as $highest_like_post)
-                                <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
-                                    class="text-decoration-none">
-                                    <h6>▶ ({{ $highest_like_post->total_likes }}
-                                        <i class="fa fa-thumbs-up"></i>) {{ $highest_like_post->post->name }}
-                                    </h6>
-                                </a>
-                            @endforeach
+                            @if($highest_like_posts)
+                                @foreach ($highest_like_posts as $highest_like_post)
+                                    <a href="{{ url('tutorial/' . $highest_like_post->post->category->slug . '/' . $highest_like_post->post->slug) }}"
+                                        class="text-decoration-none">
+                                        <h6>▶ ({{ $highest_like_post->total_likes }}
+                                            <i class="fa fa-thumbs-up"></i>) {{ $highest_like_post->post->name }}
+                                        </h6>
+                                    </a>
+                                @endforeach
+                            @endif
                         </div>
 
                     </div>
